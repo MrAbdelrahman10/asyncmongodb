@@ -1,0 +1,27 @@
+{
+  "name": "asyncmongodb",
+  "version": "1.0.0",
+  "description": "Use mongodb async",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrAbdelrahman10/asyncmongodb.git"
+  },
+  "keywords": [
+    "mongo",
+    "mongodb",
+    "async"
+  ],
+  "author": "Abdelrahman Mohamed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MrAbdelrahman10/asyncmongodb/issues"
+  },
+  "homepage": "https://github.com/MrAbdelrahman10/asyncmongodb#readme",
+  "dependencies": {
+    "mongodb": "^3.0.4"
+  }
+}
