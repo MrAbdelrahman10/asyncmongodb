@@ -1,6 +1,6 @@
 {
   "name": "asyncmongodb",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Use mongodb async",
   "main": "index.js",
   "scripts": {
