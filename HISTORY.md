@@ -1,3 +1,6 @@
+## Version 1.0.0
+* Use Object instead of parameters
+
 ## Version 0.0.2
 * Update README.md
 
