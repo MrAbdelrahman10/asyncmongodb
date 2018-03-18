@@ -1,3 +1,6 @@
+## Version 1.2.0
+* Add `count` function
+
 ## Version 1.1.0
 * Add `skip` parameter to `find`
 * Change `collectionName` parameter to `collection`

@@ -43,7 +43,7 @@ class asyncmongodb {
      * Update one row in mongodb
      * @param {Object} param0 
      */
-    async update({collection, row, where}) {
+    async update({collection, row, where = {}}) {
         return await this.db.collection(collection).updateOne(where, {$set: row}).catch((e) => e.code);
     }
 
@@ -51,7 +51,7 @@ class asyncmongodb {
      * Update many rows in mongodb
      * @param {Object} param0  
      */
-    async updateMany({collection, rows, where, ignoreErrors = true}) {
+    async updateMany({collection, rows, where = {}, ignoreErrors = true}) {
         return await this.db.collection(collection).updateMany(where, rows, { ordered: !ignoreErrors }).catch((e) => e.code);
     }
 
@@ -59,7 +59,7 @@ class asyncmongodb {
      * Delete one row in mongodb
      * @param {Object} param0 
      */
-    async delete({collection, where}) {
+    async delete({collection, where = {}}) {
         return await this.db.collection(collection).deleteOne(where).catch((e) => e.code);
     }
 
@@ -67,7 +67,7 @@ class asyncmongodb {
      * Delete many rows in mongodb
      * @param {Object} param0  
      */
-    async deleteMany({collection, where, ignoreErrors = true}) {
+    async deleteMany({collection, where = {}, ignoreErrors = true}) {
         return await this.db.collection(collection).deleteMany(where, { ordered: !ignoreErrors }).catch((e) => e.code);
     }
 
@@ -75,7 +75,7 @@ class asyncmongodb {
      * Find one row in mongodb
      * @param {Object} param0 
      */
-    async findOne({collection, where}) {
+    async findOne({collection, where = {}}) {
         return await this.db.collection(collection).findOne(where).catch((e) => e.code);
     }
 
@@ -83,9 +83,22 @@ class asyncmongodb {
      * Find rows in mongodb
      * @param {Object} param0  
      */
-    find({collection, where, limit = 0, skip = 0, fields = {}}) {
+    find({collection, where = {}, limit = 0, skip = 0, fields = {}}) {
         return new Promise((resolve, reject)=>{
             this.db.collection(collection).find(where, fields).skip(skip).limit(limit).toArray(function(err, result) {
+                if (err) reject(err);
+                resolve(result);
+              });
+        });
+    }
+
+    /**
+     * Get count of documents
+     * @param {Object} param0  
+     */
+    count({collection, where = {}, limit = 0, skip = 0, fields = {}}) {
+        return new Promise((resolve, reject)=>{
+            this.db.collection(collection).find(where, fields).skip(skip).limit(limit).count(function(err, result) {
                 if (err) reject(err);
                 resolve(result);
               });

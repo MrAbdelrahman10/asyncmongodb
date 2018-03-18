@@ -122,7 +122,7 @@ const dbName = 'myproject';
 (async () => {
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     await amng.connect();
-    const data = await mng.find({collectionName: 'countries', where:{}, fields:{}, limit: 10});
+    const data = await mng.find({collection: 'countries', where:{}, fields:{}, limit: 10});
     /**
 	 Some Code
 	*/
@@ -142,7 +142,7 @@ const dbName = 'myproject';
 // Run test
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     amng.connect()
-    .then(_ => mng.find({collectionName: 'countries', where:{}, fields:{}, limit: 10}))
+    .then(_ => mng.find({collection: 'countries', where:{}, fields:{}, limit: 10}))
 	.then(/** Some Code **/)
     .then(_ => amng.disconnect())
 	.catch((e) => {
@@ -169,7 +169,7 @@ const dbName = 'myproject';
 (async () => {
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     await amng.connect();
-    const data = await mng.findOne({collectionName: 'countries', where:{}, fields:{}, limit: 10});
+    const data = await mng.findOne({collection: 'countries', where:{}, fields:{}, limit: 10});
     /**
 	 Some Code
 	*/
@@ -189,7 +189,7 @@ const dbName = 'myproject';
 // Run test
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     amng.connect();
-    .then(_ => mng.findOne({collectionName: 'countries', where:{}, fields:{}, limit: 10}))
+    .then(_ => mng.findOne({collection: 'countries', where:{}, fields:{}, limit: 10}))
 	.then(/** Some Code **/)
     .then(_ => amng.disconnect())
 	.catch((e) => {
@@ -215,7 +215,7 @@ const dbName = 'myproject';
 (async () => {
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     await amng.connect();
-    const data = await mng.insert({collectionName: 'countries', row:{name: "Egypt"}});
+    const data = await mng.insert({collection: 'countries', row:{name: "Egypt"}});
     /**
 	 Some Code
 	*/
@@ -235,7 +235,7 @@ const dbName = 'myproject';
 // Run test
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     amng.connect();
-    .then(_ => mng.insert({collectionName: 'countries', row:{name: "Egypt"}}))
+    .then(_ => mng.insert({collection: 'countries', row:{name: "Egypt"}}))
 	.then(/** Some Code **/)
     .then(_ => amng.disconnect())
 	.catch((e) => {
@@ -262,7 +262,7 @@ const dbName = 'myproject';
 (async () => {
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     await amng.connect();
-    const res = await mng.insertMany({ collectionName: 'countries', rows: [{ _id: 1, name: 'egypt' }, { _id: 2, name: 'turkey' }, { _id: 3, name: 'malaysia' }], ignoreErrors: true }).catch((e) => e.code);
+    const res = await mng.insertMany({ collection: 'countries', rows: [{ _id: 1, name: 'egypt' }, { _id: 2, name: 'turkey' }, { _id: 3, name: 'malaysia' }], ignoreErrors: true }).catch((e) => e.code);
     /**
 	 Some Code
 	*/
@@ -282,7 +282,7 @@ const dbName = 'myproject';
 // Run test
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     amng.connect();
-    .then(_ => mng.insertMany({ collectionName: 'countries', rows: [{ _id: 1, name: 'egypt' }, { _id: 2, name: 'turkey' }, { _id: 3, name: 'malaysia' }], ignoreErrors: true }).catch((e) => e.code)
+    .then(_ => mng.insertMany({ collection: 'countries', rows: [{ _id: 1, name: 'egypt' }, { _id: 2, name: 'turkey' }, { _id: 3, name: 'malaysia' }], ignoreErrors: true }).catch((e) => e.code)
 	.then(/** Some Code **/)
     .then(_ => amng.disconnect())
 	.catch((e) => {
@@ -308,7 +308,7 @@ const dbName = 'myproject';
 (async () => {
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     await amng.connect();
-    const data = await mng.update({collectionName: 'countries', where: {_id: 1}, row:{name: "Egypt"}});
+    const data = await mng.update({collection: 'countries', where: {_id: 1}, row:{name: "Egypt"}});
     /**
 	 Some Code
 	*/
@@ -328,7 +328,7 @@ const dbName = 'myproject';
 // Run test
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     amng.connect();
-    .then(_ => mng.update({collectionName: 'countries', where: {_id: 1}, row:{name: "Egypt"}}))
+    .then(_ => mng.update({collection: 'countries', where: {_id: 1}, row:{name: "Egypt"}}))
 	.then(/** Some Code **/)
     .then(_ => amng.disconnect())
 	.catch((e) => {
@@ -355,7 +355,7 @@ const dbName = 'myproject';
 (async () => {
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     await amng.connect();
-    const res = await mng.updateMany({ collectionName: 'countries', rows: [{ _id: 1, name: 'egypt' }, { _id: 2, name: 'turkey' }, { _id: 3, name: 'malaysia' }], ignoreErrors: true }).catch((e) => e.code);
+    const res = await mng.updateMany({ collection: 'countries', rows: [{ _id: 1, name: 'egypt' }, { _id: 2, name: 'turkey' }, { _id: 3, name: 'malaysia' }], ignoreErrors: true }).catch((e) => e.code);
     /**
 	 Some Code
 	*/
@@ -375,7 +375,7 @@ const dbName = 'myproject';
 // Run test
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     amng.connect();
-    .then(_ => mng.updateMany({ collectionName: 'countries', rows: [{ _id: 1, name: 'egypt' }, { _id: 2, name: 'turkey' }, { _id: 3, name: 'malaysia' }], ignoreErrors: true }).catch((e) => e.code)
+    .then(_ => mng.updateMany({ collection: 'countries', rows: [{ _id: 1, name: 'egypt' }, { _id: 2, name: 'turkey' }, { _id: 3, name: 'malaysia' }], ignoreErrors: true }).catch((e) => e.code)
 	.then(/** Some Code **/)
     .then(_ => amng.disconnect())
 	.catch((e) => {
@@ -401,7 +401,7 @@ const dbName = 'myproject';
 (async () => {
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     await amng.connect();
-    const data = await mng.delete({collectionName: 'countries', where: {_id: 1}});
+    const data = await mng.delete({collection: 'countries', where: {_id: 1}});
     /**
 	 Some Code
 	*/
@@ -421,7 +421,7 @@ const dbName = 'myproject';
 // Run test
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     amng.connect();
-    .then(_ => mng.delete({collectionName: 'countries', where: {_id: 1}}))
+    .then(_ => mng.delete({collection: 'countries', where: {_id: 1}}))
 	.then(/** Some Code **/)
     .then(_ => amng.disconnect())
 	.catch((e) => {
@@ -448,7 +448,7 @@ const dbName = 'myproject';
 (async () => {
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     await amng.connect();
-    const res = await mng.deleteMany({ collectionName: 'countries', where: {}, ignoreErrors: true }).catch((e) => e.code);
+    const res = await mng.deleteMany({ collection: 'countries', where: {}, ignoreErrors: true }).catch((e) => e.code);
     /**
 	 Some Code
 	*/
@@ -468,7 +468,53 @@ const dbName = 'myproject';
 // Run test
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     amng.connect();
-    .then(_ => mng.deleteMany({ collectionName: 'countries', where: {}, ignoreErrors: true }).catch((e) => e.code))
+    .then(_ => mng.deleteMany({ collection: 'countries', where: {}, ignoreErrors: true }).catch((e) => e.code))
+	.then(/** Some Code **/)
+    .then(_ => amng.disconnect())
+	.catch((e) => {
+	/** Some Code **/
+	amng.disconnect()
+	});
+```
+
+### Count Documents
+
+Use **count()** to get count of documents:
+
+Using **Async/Await**
+```js
+// Test Module
+const Asyncmongodb = require('asyncmongodb');
+// Connection URL
+const url = 'mongodb://localhost:27017';
+// Database Name
+const dbName = 'myproject';
+
+// Run test
+(async () => {
+    const amng = new Asyncmongodb({ dbName: dbName, uri: url });
+    await amng.connect();
+    const res = await mng.count({ collection: 'countries', where: {} }).catch((e) => e.code);
+    /**
+	 Some Code
+	*/
+    amng.disconnect();
+})();
+```
+
+Using **Promise**
+```js
+// Test Module
+const Asyncmongodb = require('asyncmongodb');
+// Connection URL
+const url = 'mongodb://localhost:27017';
+// Database Name
+const dbName = 'myproject';
+
+// Run test
+    const amng = new Asyncmongodb({ dbName: dbName, uri: url });
+    amng.connect();
+    .then(_ => mng.count({ collection: 'countries', where: {}, ignoreErrors: true }).catch((e) => e.code))
 	.then(/** Some Code **/)
     .then(_ => amng.disconnect())
 	.catch((e) => {
