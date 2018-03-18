@@ -1,3 +1,7 @@
+## Version 1.1.0
+* Add `skip` parameter to `find`
+* Change `collectionName` parameter to `collection`
+
 ## Version 1.0.0
 * Use Object instead of parameters
 
