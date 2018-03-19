@@ -1,9 +1,11 @@
 
-# Description
+# Async Mongodb
+
+## Description
 
 Connect to mongodb by promise
 
-## Async Mongodb
+## Documentation
 
 | what          | where                                          |
 |---------------|------------------------------------------------|
@@ -67,7 +69,7 @@ Add code to connect to the server and the database **myproject**:
 
 Using **Async/Await**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -87,7 +89,7 @@ const dbName = 'myproject';
 
 Using **Promise**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -111,7 +113,7 @@ Use **find()** to return all documents:
 
 Using **Async/Await**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -122,7 +124,7 @@ const dbName = 'myproject';
 (async () => {
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     await amng.connect();
-    const data = await mng.find({collection: 'countries', where:{}, fields:{}, limit: 10});
+    const data = await mng.find({collection: 'countries', where:{}, fields:{}, sort: {name: 1}, limit: 10});
     /**
 	 Some Code
 	*/
@@ -132,7 +134,7 @@ const dbName = 'myproject';
 
 Using **Promise**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -142,7 +144,7 @@ const dbName = 'myproject';
 // Run test
     const amng = new Asyncmongodb({ dbName: dbName, uri: url });
     amng.connect()
-    .then(_ => mng.find({collection: 'countries', where:{}, fields:{}, limit: 10}))
+    .then(_ => mng.find({collection: 'countries', where:{}, fields:{}, sort: {name: 1}, limit: 10}))
 	.then(/** Some Code **/)
     .then(_ => amng.disconnect())
 	.catch((e) => {
@@ -158,7 +160,7 @@ Use **findOne()** to return one document:
 
 Using **Async/Await**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -179,7 +181,7 @@ const dbName = 'myproject';
 
 Using **Promise**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -204,7 +206,7 @@ Use **insert()** to insert one document:
 
 Using **Async/Await**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -225,7 +227,7 @@ const dbName = 'myproject';
 
 Using **Promise**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -251,7 +253,7 @@ Use **insertMany()** to insert many documents:
 
 Using **Async/Await**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -272,7 +274,7 @@ const dbName = 'myproject';
 
 Using **Promise**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -297,7 +299,7 @@ Use **update()** to update one document:
 
 Using **Async/Await**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -318,7 +320,7 @@ const dbName = 'myproject';
 
 Using **Promise**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -344,7 +346,7 @@ Use **updateMany()** to update many documents:
 
 Using **Async/Await**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -365,7 +367,7 @@ const dbName = 'myproject';
 
 Using **Promise**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -390,7 +392,7 @@ Use **delete()** to delete one document:
 
 Using **Async/Await**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -411,7 +413,7 @@ const dbName = 'myproject';
 
 Using **Promise**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -437,7 +439,7 @@ Use **deleteMany()** to delete many documents:
 
 Using **Async/Await**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -458,7 +460,7 @@ const dbName = 'myproject';
 
 Using **Promise**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -483,7 +485,7 @@ Use **count()** to get count of documents:
 
 Using **Async/Await**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -504,7 +506,7 @@ const dbName = 'myproject';
 
 Using **Promise**
 ```js
-// Test Module
+// Load Module
 const Asyncmongodb = require('asyncmongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -522,6 +524,3 @@ const dbName = 'myproject';
 	amng.disconnect()
 	});
 ```
-
-
-**Powered by Knawat**

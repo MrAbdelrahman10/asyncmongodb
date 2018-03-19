@@ -14,9 +14,11 @@ const collectionName = 'documents';
 (async () => {
     const mng = new Asyncmongodb({ dbName: dbName, uri: url });
     await mng.connect();
-    var res = await mng.insertMany({ collection: 'countries', rows: [{ _id: 1, name: 'egypt' }, { _id: 2, name: 'turkey' }, { _id: 3, name: 'malaysia' }], ignoreErrors: true }).catch((e) => e.code);
-    var data = await mng.findOne({ collection: 'countries', where: {}, fields: {}, limit: 1 })
-    // console.log(res);
-    console.log(data);
+    var _insert = await mng.insertMany({ collection: 'countries', rows: [{ _id: 1, name: 'egypt' }, { _id: 2, name: 'turkey' }, { _id: 3, name: 'malaysia' }], ignoreErrors: true }).catch((e) => e.code);
+    var _findOne = await mng.findOne({ collection: 'countries', where: {}});
+    var _find = await mng.find({ collection: 'countries', where: {}, fields: {}, limit: 1, sort: {name: 1} })
+    console.log(_insert);
+    console.log(_findOne);
+    console.log(_findOne);
     mng.disconnect();
 })();

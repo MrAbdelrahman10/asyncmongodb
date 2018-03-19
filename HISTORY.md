@@ -1,3 +1,6 @@
+## Version 1.3.0
+* Add `sort` parameter to `find`
+
 ## Version 1.2.0
 * Add `count` function
 
