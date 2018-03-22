@@ -28,7 +28,11 @@ class asyncmongodb {
      * @param {Object} param0 
      */
     async insert({ collection, row }) {
-        return await this.db.collection(collection).insertOne(row).catch((e) => e.code);
+        return new Promise((resolve, reject) => {
+            this.db.collection(collection).insertOne(row)
+                .then(_ => resolve(true))
+                .catch((e) => reject(e));
+        });
     }
 
     /**
@@ -36,7 +40,11 @@ class asyncmongodb {
      * @param {Object} param0 
      */
     async insertMany({ collection, rows, ignoreErrors = true }) {
-        return await this.db.collection(collection).insertMany(rows, { ordered: !ignoreErrors }).catch((e) => e.code);
+        return new Promise((resolve, reject) => {
+            this.db.collection(collection).insertMany(rows, { ordered: !ignoreErrors })
+                .then(_ => resolve(true))
+                .catch((e) => reject(e));
+        });
     }
 
     /**
@@ -44,7 +52,11 @@ class asyncmongodb {
      * @param {Object} param0 
      */
     async update({ collection, row, where = {} }) {
-        return await this.db.collection(collection).updateOne(where, { $set: row }).catch((e) => e.code);
+        return new Promise((resolve, reject) => {
+            this.db.collection(collection).updateOne(where, { $set: row })
+                .then(_ => resolve(true))
+                .catch((e) => reject(e));
+        });
     }
 
     /**
@@ -52,7 +64,11 @@ class asyncmongodb {
      * @param {Object} param0  
      */
     async updateMany({ collection, rows, where = {}, ignoreErrors = true }) {
-        return await this.db.collection(collection).updateMany(where, rows, { ordered: !ignoreErrors }).catch((e) => e.code);
+        return new Promise((resolve, reject) => {
+            this.db.collection(collection).updateMany(where, rows, { ordered: !ignoreErrors })
+                .then(_ => resolve(true))
+                .catch((e) => reject(e));
+        });
     }
 
     /**
@@ -60,7 +76,11 @@ class asyncmongodb {
      * @param {Object} param0 
      */
     async delete({ collection, where = {} }) {
-        return await this.db.collection(collection).deleteOne(where).catch((e) => e.code);
+        return new Promise((resolve, reject) => {
+            this.db.collection(collection).deleteOne(where)
+                .then(_ => resolve(true))
+                .catch((e) => reject(e));
+        });
     }
 
     /**
@@ -68,15 +88,24 @@ class asyncmongodb {
      * @param {Object} param0  
      */
     async deleteMany({ collection, where = {}, ignoreErrors = true }) {
-        return await this.db.collection(collection).deleteMany(where, { ordered: !ignoreErrors }).catch((e) => e.code);
+        return new Promise((resolve, reject) => {
+            this.db.collection(collection).deleteMany(where, { ordered: !ignoreErrors })
+                .then(_ => resolve(true))
+                .catch((e) => reject(e));
+        });
     }
 
     /**
      * Find one row in mongodb
      * @param {Object} param0 
      */
-    async findOne({ collection, where = {}, fields = {} }) {
-        return await this.db.collection(collection).findOne(where, fields).catch((e) => e.code);
+    async findOne({ collection, where = {}, fields = {}, sort = {} }) {
+        return new Promise((resolve, reject) => {
+            this.db.collection(collection).findOne(where, { sort: sort }, function (err, result) {
+                if (err) reject(err);
+                resolve(result);
+            });
+        });
     }
 
     /**
@@ -99,6 +128,19 @@ class asyncmongodb {
     count({ collection, where = {}, limit = 0, skip = 0, fields = {} }) {
         return new Promise((resolve, reject) => {
             this.db.collection(collection).find(where, fields).skip(skip).limit(limit).count(function (err, result) {
+                if (err) reject(err);
+                resolve(result);
+            });
+        });
+    }
+
+    /**
+     * Drop Collection
+     * @param {Object} param0  
+     */
+    dropCollection(collection) {
+        return new Promise((resolve, reject) => {
+            this.db.dropCollection(collection, function (err, result) {
                 if (err) reject(err);
                 resolve(result);
             });

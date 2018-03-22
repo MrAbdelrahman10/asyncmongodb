@@ -1,7 +1,7 @@
 {
   "name": "asyncmongodb",
-  "version": "1.3.0",
-  "description": "Use mongodb async",
+  "version": "1.4.0",
+  "description": "Easiest module to connect to mongodb by promise or async/await",
   "main": "index.js",
   "scripts": {
     "test": "node test"

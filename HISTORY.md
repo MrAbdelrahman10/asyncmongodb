@@ -1,3 +1,6 @@
+## Version 1.4.0
+* Add `dropCollection` function
+
 ## Version 1.3.0
 * Add `sort` parameter to `find`
 
