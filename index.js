@@ -17,7 +17,7 @@ class asyncmongodb {
     /**
      * Connect to mongodb
      */
-    async connect() {
+    connect() {
         return MongoClient.connect(this.config.uri)
             .then((client) => { this.client = client; this.db = this.client.db(this.config.dbName); return true; })
             .catch((e) => e);
@@ -27,7 +27,7 @@ class asyncmongodb {
      * Insert one row to mongodb
      * @param {Object} param0 
      */
-    async insert({ collection, row }) {
+    insert({ collection, row }) {
         return new Promise((resolve, reject) => {
             this.db.collection(collection).insertOne(row)
                 .then(_ => resolve(true))
@@ -39,7 +39,7 @@ class asyncmongodb {
      * Insert many rows to mongodb
      * @param {Object} param0 
      */
-    async insertMany({ collection, rows, ignoreErrors = true }) {
+    insertMany({ collection, rows, ignoreErrors = true }) {
         return new Promise((resolve, reject) => {
             this.db.collection(collection).insertMany(rows, { ordered: !ignoreErrors })
                 .then(_ => resolve(true))
@@ -51,7 +51,7 @@ class asyncmongodb {
      * Update one row in mongodb
      * @param {Object} param0 
      */
-    async update({ collection, row, where = {} }) {
+    update({ collection, row, where = {} }) {
         return new Promise((resolve, reject) => {
             this.db.collection(collection).updateOne(where, { $set: row })
                 .then(_ => resolve(true))
@@ -63,7 +63,7 @@ class asyncmongodb {
      * Update many rows in mongodb
      * @param {Object} param0  
      */
-    async updateMany({ collection, rows, where = {}, ignoreErrors = true }) {
+    updateMany({ collection, rows, where = {}, ignoreErrors = true }) {
         return new Promise((resolve, reject) => {
             this.db.collection(collection).updateMany(where, rows, { ordered: !ignoreErrors })
                 .then(_ => resolve(true))
@@ -75,7 +75,7 @@ class asyncmongodb {
      * Delete one row in mongodb
      * @param {Object} param0 
      */
-    async delete({ collection, where = {} }) {
+    delete({ collection, where = {} }) {
         return new Promise((resolve, reject) => {
             this.db.collection(collection).deleteOne(where)
                 .then(_ => resolve(true))
@@ -87,7 +87,7 @@ class asyncmongodb {
      * Delete many rows in mongodb
      * @param {Object} param0  
      */
-    async deleteMany({ collection, where = {}, ignoreErrors = true }) {
+    deleteMany({ collection, where = {}, ignoreErrors = true }) {
         return new Promise((resolve, reject) => {
             this.db.collection(collection).deleteMany(where, { ordered: !ignoreErrors })
                 .then(_ => resolve(true))
@@ -99,7 +99,7 @@ class asyncmongodb {
      * Find one row in mongodb
      * @param {Object} param0 
      */
-    async findOne({ collection, where = {}, fields = {}, sort = {} }) {
+    findOne({ collection, where = {}, fields = {}, sort = {} }) {
         return new Promise((resolve, reject) => {
             this.db.collection(collection).findOne(where, { sort: sort }, function (err, result) {
                 if (err) reject(err);
@@ -150,9 +150,9 @@ class asyncmongodb {
     /**
      * Disconnect Mongodb connection 
      */
-    async disconnect() {
+    disconnect() {
         if (this.client) {
-            await this.client.close();
+            return this.client.close();
         }
     }
 

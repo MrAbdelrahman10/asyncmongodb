@@ -1,3 +1,6 @@
+## Version 1.4.1
+* Fix bugs with old nodejs versions
+
 ## Version 1.4.0
 * Add `dropCollection` function
 
